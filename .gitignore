@@ -1,0 +1,15 @@
+*
+!.gitignore
+!LICENSE
+!README.md
+!go.mod
+!go.sum
+!src
+!src/client
+!src/client/*.go
+!src/engin
+!src/engin/*.go
+!src/simcity
+!src/simcity/*.go
+!src/simcity/main
+!src/simcity/main/*.go
