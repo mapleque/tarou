@@ -9,11 +9,12 @@ func main() {
 	c := client.New()
 	city := simcity.New()
 
-	c.Display.SetTemplate(simcity.ShellTemplate)
+	_ = c.Display.SetTemplate(simcity.ShellTemplate)
 	c.Display.SetData(city)
 
 	c.Operator.Bind("n", "new build", city.CreateUnit)
 	c.Operator.Bind("q", "exit", c.Exit)
+	c.Display.SetOps(c.Operator)
 
 	c.Refresh()
 

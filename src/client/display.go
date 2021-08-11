@@ -8,6 +8,7 @@ import (
 type Display struct {
 	tpl  *template.Template
 	data interface{}
+	ops  interface{}
 }
 
 func (d *Display) SetTemplate(tpl string) error {
@@ -20,6 +21,16 @@ func (d *Display) SetData(data interface{}) {
 	d.data = data
 }
 
+func (d *Display) SetOps(ops interface{}) {
+	d.ops = ops
+}
+
 func (d *Display) Output() {
-	_ = d.tpl.Execute(os.Stdout, d.data)
+	_ = d.tpl.Execute(os.Stdout, struct {
+		Data interface{}
+		Ops  interface{}
+	}{
+		Data: d.data,
+		Ops:  d.ops,
+	})
 }
