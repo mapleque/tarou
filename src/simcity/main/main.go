@@ -16,7 +16,5 @@ func main() {
 	c.Operator.Bind("q", "exit", c.Exit)
 	c.Display.SetOps(c.Operator)
 
-	c.Refresh()
-
 	c.Start()
 }

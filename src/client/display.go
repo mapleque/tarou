@@ -1,7 +1,7 @@
 package client
 
 import (
-	"os"
+	"bytes"
 	"text/template"
 )
 
@@ -25,12 +25,14 @@ func (d *Display) SetOps(ops interface{}) {
 	d.ops = ops
 }
 
-func (d *Display) Output() {
-	_ = d.tpl.Execute(os.Stdout, struct {
+func (d *Display) Output() string {
+	var buf bytes.Buffer
+	_ = d.tpl.Execute(&buf, struct {
 		Data interface{}
 		Ops  interface{}
 	}{
 		Data: d.data,
 		Ops:  d.ops,
 	})
+	return buf.String()
 }

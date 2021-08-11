@@ -7,17 +7,18 @@ import (
 )
 
 const ShellTemplate = `
-Wellcome to our simcity!
+Welcome to our simcity!
 +---------------------------------------+
-Total	Unit: {{.Data.TotalUnit}}	Value: {{.Data.TotalValue}}
+Total	U: {{.Data.TotalUnit}}	$: {{.Data.TotalValue}}
 {{- range $index, $element := .Data.Units }}
->	Seq: {{$index}}	Value: {{$element.Value}}
+>	{{$index}}	$: {{$element.Value}}
 {{- end }}
 +---------------------------------------+
 Operator list:
 {{- range $index, $element := .Ops.Ops }}
-{{$index}}	{{$element}}
+	{{$element}}
 {{- end }}
+
 Please choose an operator and Press Enter:
 `
 

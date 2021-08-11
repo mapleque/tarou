@@ -1,10 +1,10 @@
-.PHONY: clean run build hooks lint test tidy cover
+.PHONY: clean run build hooks lint test tidy cover simcity
 
-run: simcity
+simcity: bin/simcity
 	-mkdir bin
 	./bin/simcity
 
-simcity: src/engin/*.go src/client/*.go src/simcity/*.go src/simcity/main/main.go
+bin/simcity: src/engin/*.go src/client/*.go src/simcity/*.go src/simcity/main/main.go
 	go mod tidy
 	go build -ldflags="-s" -o ./bin/simcity src/simcity/main/main.go
 
